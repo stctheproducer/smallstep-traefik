@@ -5,6 +5,6 @@ if [ ! -z "$VERSION" ]; then
   image="$DOCKER_REPO:$VERSION-alpha"
 fi
 
-docker buildx create --use --driver cloud stctheproducer/default
+docker buildx create --create --driver cloud stctheproducer/default
 
-docker buildx build --platform linux/amd64,linux/arm64 --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $IMAGE_NAME --push ../../
+docker buildx build --builder cloud-stctheproducer-default --platform linux/amd64,linux/arm64 --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $IMAGE_NAME --push ../../
