@@ -2,7 +2,7 @@
 
 image="$IMAGE_NAME"
 if [ ! -z "$VERSION" ]; then
-  image="$DOCKER_REPO:$VERSION"
+  image="$DOCKER_REPO:$VERSION-alpha"
 fi
 
-docker build --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $image ../../
+docker build --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $IMAGE_NAME ../../
