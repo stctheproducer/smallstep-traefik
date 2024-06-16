@@ -15,7 +15,7 @@ COPY --from=proxy /usr/local/bin/traefik /usr/local/bin/
 ARG CA_URL=https://step:9000
 ARG CA_FINGERPRINT
 
-ENV CA_URL=${CA_URL} CA_FINGERPRINT=${CA_FINGERPRINT} STEPPATH=/.step TLS_CERT_LOCATION=/run/tls/server.crt TLS_KEY_LOCATION=/run/tls/server.key TLS_CA_CERT_LOCATION=/run/tls/ca.crt
+ENV CA_URL=${CA_URL} CA_FINGERPRINT=${CA_FINGERPRINT} STEPPATH=/.step TLS_CERT_LOCATION=/run/tls/server.crt TLS_KEY_LOCATION=/run/tls/server.key TLS_CA_CERT_LOCATION=/run/tls/ca.crt LEGO_CA_CERTIFICATES=/run/tls/ca.crt
 
 RUN mkdir -p /run/tls
 
