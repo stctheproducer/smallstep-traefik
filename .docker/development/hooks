@@ -1,3 +1,8 @@
 #!/bin/bash
 
-docker build --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg SMALLSTEP_CA_URL=$SMALLSTEP_CA_URL --build-arg SMALLSTEP_CA_FINGERPRINT=$SMALLSTEP_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $IMAGE_NAME ../..
+image="$IMAGE_NAME"
+if [ ! -z "$VERSION" ]; then
+  image="$DOCKER_REPO:$VERSION"
+fi
+
+docker build --build-arg CA_URL=$DEV_CA_URL --build-arg CA_FINGERPRINT=$DEV_CA_FINGERPRINT --build-arg SMALLSTEP_CA_URL=$SMALLSTEP_CA_URL --build-arg SMALLSTEP_CA_FINGERPRINT=$SMALLSTEP_CA_FINGERPRINT --build-arg VERSION=$DEV_VERSION -f Dockerfile -t $image ../..
